@@ -1,8 +1,26 @@
 # Scripts
 ###### Linux and Ansible scripts from my CS class
 
-Note: The following image link needs to be updated. Replace diagram_filename.png with the name of your diagram image file.
-![alt](https://drive.google.com/file/d/1FVVrpSx9WLBdVPZfm1dTxjwEXRjvJvOp/view?usp=sharing)
+## Automated ELK Stack Deployment
+
+The files in this repository were used to configure the network depicted below.
+
+![TODO: Update the path with the name of your diagram](Images/diagram_filename.png)
+
+These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the _____ file may be used to install only certain pieces of it, such as Filebeat.
+
+  - _TODO: Enter the playbook file._
+
+This document contains the following details:
+- Description of the Topologu
+- Access Policies
+- ELK Configuration
+  - Beats in Use
+  - Machines Being Monitored
+- How to Use the Ansible Build
+
+
+### Description of the Topology
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
@@ -79,4 +97,4 @@ _TODO: Answer the following questions to fill in the blanks:_
 - _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
 - _Which URL do you navigate to in order to check that the ELK server is running?
 
-_As a **Bonus**, provide the specific commands the user will need to
+_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
