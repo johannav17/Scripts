@@ -29,53 +29,29 @@ This document contains the following details:
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
-<<<<<<< HEAD
-Load balancing ensures that the application will be highly _____, in addition to restricting _____ to the network.
-- _TODO: What aspect of security do load balancers protect? What is the advantage of a jump box?_
-
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____.
-- _TODO: What does Filebeat watch for?_
-- _TODO: What does Metricbeat record?_
-=======
 Load balancing ensures that the application will be highly available, in addition to restricting access to the network.
 
 - What aspect of security do load balancers protect? Load balancer analyze traffic coming in and determines what server to send the traffic to.
 - What is the advantage of a jump box? A jump box limits access that the public has to your virtual network because in order to access the other virtual machines, an individual needs the private IPs of the machines. A jumpbox allows control over access to a virtual network and its contents.
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____.
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the log files and system metrics.
 
 - What does Filebeat watch for? Filebeat looks for any changes made to the files and when any are detected, it'll generate and organize the log files. 
 - What does Metricbeat record?  Metricbeat records metrics from the Operating system and services running on the server.
->>>>>>> 1a897b9eef0257943e63ecb39573603d63223a0b
 
 The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
 | Name                 | Function                   | IP Address | Operating System |
-|----------------------|----------------------------|------------|------------------|
 | Jump-Box-Provisioner | Gateway                    | 10.0.0.1   | Ubuntu LTS 18.04 |
-<<<<<<< HEAD
-| Elk                  |   Application Server       | 10.1.0.4   | Ubuntu LTS 18.04 |
 | Web-1                |   Application Server       | 10.0.0.8   | Ubuntu LTS 18.04 |
 | Web 2                |   Application Server       | 10.0.0.9   | Ubuntu LTS 18.04 |
-| Web-3                |   Application Server       | 10.0.0.10  | Ubuntu LTS 18.04 |
-=======
 | Elk                  | ELK Stack                  | 10.1.0.4   | Ubuntu LTS 18.04 |
-| Web-1                | Web Server                 | 10.0.0.8   | Ubuntu LTS 18.04 |
-| Web 2                | Web Server                 | 10.0.0.9   | Ubuntu LTS 18.04 |
->>>>>>> 1a897b9eef0257943e63ecb39573603d63223a0b
 
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
 
-<<<<<<< HEAD
-Only the _____ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _TODO: Add whitelisted IP addresses_
-
-Machines within the network can only be accessed by _____.
-- _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
-=======
 Only the Jump-Box machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
 - The public IP address 52.165.4.85.
 
@@ -83,32 +59,25 @@ Machines within the network can only be accessed by the Jump-Box VM.
 
 - Which machine did you allow to access your ELK VM? I accessed the ELK VM with my Jump-Box Virtual Machine.
 - What was its IP address? The IP address is 51.13.105.172.
->>>>>>> 1a897b9eef0257943e63ecb39573603d63223a0b
 
 A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
-|----------|---------------------|----------------------|
-<<<<<<< HEAD
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
-|          |                     |                      |
-|          |                     |                      |
-=======
 | Jump Box | Yes                 | 52.165.4.85          |
 | Web-1 RT | No                  | 10.0.0.4             |
 | Web-1 RT | No                  | 10.0.0.4             |
 | ELK Mach.| Yes (Port 5601)     | 52.165.4.85          |
->>>>>>> 1a897b9eef0257943e63ecb39573603d63223a0b
 
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- _TODO: What is the main advantage of automating configuration with Ansible?_
+Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because it allows a consistent and predictable configuration. In addition to consistency, with an automated setup, the ELK stack can be created and configured very quickly.
 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+- The first task of the elk playbook installs docker.io on the Elk virtual machine
+- Next we install Python in the ELK VM
+- We make sure that there's enough space for ELK since it does require more memory than others
+- Next we make sure that docker container is downloaded and running
+- Finally we run ELK on the Docker container
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
@@ -128,20 +97,6 @@ These Beats allow us to collect the following information from each machine:
 - Make the changes needed to the filebeat-config.yml file in the host "10.1.0.4:9200" with username "elastic" and password "changeme" and setup.Kibana host to "10.1.0.4:5601".
 - Last we run the playbook, go to the website for Kibana and make sure that once we click the "Check Data" at the bottom of the page reflects that the installation is working successfully.
 
-The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
-
-![](Diagrams/Docker.ps.png)
-
-### Target Machines & Beats
-This ELK server is configured to monitor the following machines:
-- Web-1-Red Team 10.0.0.8 and Web-2-Red Team 10.0.0.9
-
-We have installed the following Beats on these machines:
-- Filebeat and Metricbeat
-
-These Beats allow us to collect the following information from each machine:
-- 
-
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
@@ -156,5 +111,5 @@ Answer the following questions to fill in the blanks:_
 - Which URL do you navigate to in order to check that the ELK server is running? The Kibana URL is the one we are utilizing to make sure our ELK servers are up and running. We added all the private IPs to the hosts file to make sure all the connections needed were functioning. http://[your.elk.ip]:5601/app/kibana.
 - 
 As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc.
-$ Command line $ ansible-playbook metricbeat-playbook.yml
-$ Command line $ ansible-playbook filebeat-playbook.yml
+- $ Command line $ ansible-playbook metricbeat-playbook.yml
+- $ Command line $ ansible-playbook filebeat-playbook.yml
