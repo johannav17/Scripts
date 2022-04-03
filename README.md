@@ -5,7 +5,7 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![alt](/Users/vince/Documents/Cybersecurity-Bootcamp/Scripts/Diagrams/Project1.drawio.png)
+![](Diagrams/Project1.drawio.png)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the Playbook file may be used to install only certain pieces of it, such as Filebeat.
 
@@ -25,12 +25,15 @@ This document contains the following details:
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
-Load balancing ensures that the application will be highly _____, in addition to restricting _____ to the network.
-- _TODO: What aspect of security do load balancers protect? What is the advantage of a jump box?_
+Load balancing ensures that the application will be highly available, in addition to restricting access to the network.
 
+- What aspect of security do load balancers protect? Load balancer analyze traffic coming in and determines what server to send the traffic to.
+- What is the advantage of a jump box? A jump box limits access that the public has to your virtual network because in order to access the other virtual machines, an individual needs the private IPs of the machines. A jumpbox allows control over access to a virtual network and its contents.
+- 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____.
-- _TODO: What does Filebeat watch for?_
-- _TODO: What does Metricbeat record?_
+
+- What does Filebeat watch for? Filebeat looks for any changes made to the files and when any are detected, it'll generate and organize the log files. 
+- What does Metricbeat record?  Metricbeat records metrics from the Operating system and services running on the server. By using Elasticsearch or Logstash, you can visualize the metrics and statistics that Metricbeat generates from the OS and running services.
 
 The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
@@ -38,28 +41,30 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 | Name                 | Function                   | IP Address | Operating System |
 |----------------------|----------------------------|------------|------------------|
 | Jump-Box-Provisioner | Gateway                    | 10.0.0.1   | Ubuntu LTS 18.04 |
-| Elk                  |   Application Server       | 10.1.0.4   | Ubuntu LTS 18.04 |
-| Web-1                |   Application Server       | 10.0.0.8   | Ubuntu LTS 18.04 |
-| Web 2                |   Application Server       | 10.0.0.9   | Ubuntu LTS 18.04 |
-| Web-3                |   Application Server       | 10.0.0.10  | Ubuntu LTS 18.04 |
+| Elk                  | ELK Stack                  | 10.1.0.4   | Ubuntu LTS 18.04 |
+| Web-1                | Web Server                 | 10.0.0.8   | Ubuntu LTS 18.04 |
+| Web 2                | Web Server                 | 10.0.0.9   | Ubuntu LTS 18.04 |
 
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
 
-Only the _____ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _TODO: Add whitelisted IP addresses_
+Only the Jump-Box machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+- My public IP address 52.165.4.85.
 
-Machines within the network can only be accessed by _____.
-- _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
+Machines within the network can only be accessed by the Jump-Box VM.
+
+- Which machine did you allow to access your ELK VM? I accessed the ELK VM with my Jump-Box-Provisioner.
+- What was its IP address? The IP address is 51.13.105.172.
 
 A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
-|          |                     |                      |
-|          |                     |                      |
+| Jump Box | Yes                 | 52.165.4.85          |
+| Web-1 RT | No                  | 10.0.0.4             |
+| Web-1 RT | No                  | 10.0.0.4             |
+| ELK Mach.| Yes (Port 5601)     | 52.165.4.85          |
 
 ### Elk Configuration
 
