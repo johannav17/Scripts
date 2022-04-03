@@ -5,10 +5,6 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![TODO: Update the path with the name of your diagram](Images/diagram_filename.png)
-
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the _____ file may be used to install only certain pieces of it, such as Filebeat.
-
 ![](Diagrams/Project1.drawio.png)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the Playbook file may be used to install only certain pieces of it, such as Filebeat.
@@ -43,6 +39,7 @@ The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
 | Name                 | Function                   | IP Address | Operating System |
+|----------------------|----------------------------|------------|------------------|
 | Jump-Box-Provisioner | Gateway                    | 10.0.0.1   | Ubuntu LTS 18.04 |
 | Web-1                |   Application Server       | 10.0.0.8   | Ubuntu LTS 18.04 |
 | Web 2                |   Application Server       | 10.0.0.9   | Ubuntu LTS 18.04 |
@@ -63,6 +60,7 @@ Machines within the network can only be accessed by the Jump-Box VM.
 A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
+|----------|---------------------|----------------------|
 | Jump Box | Yes                 | 52.165.4.85          |
 | Web-1 RT | No                  | 10.0.0.4             |
 | Web-1 RT | No                  | 10.0.0.4             |
