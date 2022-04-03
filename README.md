@@ -29,11 +29,11 @@ Load balancing ensures that the application will be highly available, in additio
 
 - What aspect of security do load balancers protect? Load balancer analyze traffic coming in and determines what server to send the traffic to.
 - What is the advantage of a jump box? A jump box limits access that the public has to your virtual network because in order to access the other virtual machines, an individual needs the private IPs of the machines. A jumpbox allows control over access to a virtual network and its contents.
-- 
+
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____.
 
 - What does Filebeat watch for? Filebeat looks for any changes made to the files and when any are detected, it'll generate and organize the log files. 
-- What does Metricbeat record?  Metricbeat records metrics from the Operating system and services running on the server. By using Elasticsearch or Logstash, you can visualize the metrics and statistics that Metricbeat generates from the OS and running services.
+- What does Metricbeat record?  Metricbeat records metrics from the Operating system and services running on the server.
 
 The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
@@ -50,11 +50,11 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 The machines on the internal network are not exposed to the public Internet. 
 
 Only the Jump-Box machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- My public IP address 52.165.4.85.
+- The public IP address 52.165.4.85.
 
 Machines within the network can only be accessed by the Jump-Box VM.
 
-- Which machine did you allow to access your ELK VM? I accessed the ELK VM with my Jump-Box-Provisioner.
+- Which machine did you allow to access your ELK VM? I accessed the ELK VM with my Jump-Box Virtual Machine.
 - What was its IP address? The IP address is 51.13.105.172.
 
 A summary of the access policies in place can be found in the table below.
@@ -72,23 +72,23 @@ Ansible was used to automate configuration of the ELK machine. No configuration 
 - _TODO: What is the main advantage of automating configuration with Ansible?_
 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+- Copy the filebeat-config.yml file to /etc/ansible/filebeat-config.yml
+- Make the changes needed to the filebeat-config.yml file in the host "10.1.0.4:9200" with username "elastic" and password "changeme" and setup.Kibana host to "10.1.0.4:5601".
+- Last we run the playbook, go to the website for Kibana and make sure that once we click the "Check Data" at the bottom of the page reflects that the installation is working successfully.
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![TODO: Update the path with the name of your screenshot of docker ps output](Images/docker_ps_output.png)
+![](Images/docker_ps_output.png)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- _TODO: List the IP addresses of the machines you are monitoring_
+- Web-1-Red Team 10.0.0.8 and Web-2-Red Team 10.0.0.9
 
 We have installed the following Beats on these machines:
-- _TODO: Specify which Beats you successfully installed_
+- Filebeat and Metricbeat
 
 These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+- 
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
